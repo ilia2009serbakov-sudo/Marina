@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Детская студия Марины Швачко — Оренбург</title>
+
+  <style>
+    /* ========== Цвета ========== */
+    :root {
+      --bg: #fff8ec;
+      --surface: #ffffff;
+      --text: #2b2a33;
+      --muted: #6a6872;
+      --accent: #ef6a4c;
+      --sun: #ffc83d;
+      --mint: #5cc3a7;
+      --sky: #6aa7f5;
+      --line: #f0e3cc;
+
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #1d1b22;
+        --surface: #28252f;
+        --text: #f6f1e7;
+        --muted: #a9a5b3;
+        --line: #3a3642;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #1d1b22;
+      --surface: #28252f;
+      --text: #f6f1e7;
+      --muted: #a9a5b3;
+      --line: #3a3642;
+    }
+
+    /* ========== Базовые стили ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Nunito", system-ui, sans-serif;
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ========== Шапка ========== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ========== Первый экран ========== */
+    .hero {
+      display: grid;
+      gap: 24px;
+      padding: 56px 0 72px;
+    }
+
+    .badge {
+      justify-self: start;
+      background: var(--sun);
+      color: #2b2a33;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 999px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 8vw, 66px);
+      max-width: 16ch;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 52ch;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    /* ========== Кнопки ========== */
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 16px;
+      border: 2px solid var(--accent);
+    }
+
+    .btn.ghost {
+      background: none;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .btn:hover {
+      filter: brightness(1.08);
+    }
+
+    /* Цветная полоска-«карандаши» */
+    .stripe {
+      height: 8px;
+      background: linear-gradient(90deg, var(--accent) 25%, var(--sun) 25% 50%, var(--mint) 50% 75%, var(--sky) 75%);
+    }
+
+    /* ========== Секции ========== */
+    section {
+      padding: 68px 0;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 30px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .year {
+      background: var(--sun);
+      color: #2b2a33;
+      border-radius: 28px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .year b {
+      display: block;
+      font-size: 72px;
+      line-height: 1;
+    }
+
+    /* ========== Направления ========== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 28px;
+      border-top: 8px solid var(--c);
+    }
+
+    .card small {
+      display: inline-block;
+      background: var(--c);
+      color: #2b2a33;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ========== Принципы ========== */
+    .points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .points li::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: var(--mint);
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .points strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .points span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ========== Контакты ========== */
+    .contact {
+      background: var(--surface);
+    }
+
+    .contact .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+
+    .contact small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .contact .big {
+      font-size: 24px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .contact a.big:hover {
+      color: var(--accent);
+    }
+
+    /* ========== Подвал ========== */
+    footer {
+      padding: 26px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== Шапка и первый экран ========== */ -->
+  <div class="wrap">
+    <header>
+      <a class="logo" href="#top">Студия <span>Марины Швачко</span></a>
+      <nav>
+        <a href="#o-studii">О студии</a>
+        <a href="#napravleniya">Направления</a>
+        <a href="#kontakty">Контакты</a>
+      </nav>
+    </header>
+
+    <div class="hero" id="top">
+      <div class="badge">Оренбург · с 2008 года</div>
+      <h1>Развиваем детей <em>играя</em></h1>
+      <p>
+        Детская студия для дошкольников и младших школьников: безопасно,
+        эффективно и интересно. Ребёнок учится общаться в коллективе
+        и с радостью открывает новое.
+      </p>
+      <div class="btns">
+        <a class="btn" href="tel:+79877956678">Позвонить в студию</a>
+        <a class="btn ghost" href="https://vk.ru/club111517647" target="_blank" rel="noopener">Мы ВКонтакте</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stripe"></div>
+
+  <!-- ========== О студии ========== -->
+  <section id="o-studii">
+    <div class="wrap about">
+      <div>
+        <h2>О студии</h2>
+        <p>
+          За много лет работы мы накопили большой опыт в развитии и обучении
+          детей дошкольного и младшего школьного возраста. Используем разные
+          игровые методики, которые помогают ребёнку освоиться в коллективе
+          и вовлекают его в увлекательный процесс познания.
+        </p>
+      </div>
+      <div class="year">
+        <b>2008</b>
+        год основания студии
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Направления ========== -->
+  <section id="napravleniya" style="background: var(--surface)">
+    <div class="wrap">
+      <h2>Наши направления</h2>
+
+      <div class="cards">
+        <div class="card" style="--c: var(--sun)">
+          <small>2–3 года</small>
+          <h3>Клуб молодых мам</h3>
+          <p>Занятия для самых маленьких вместе с мамой. Первый шаг к общению с другими детьми.</p>
+        </div>
+
+        <div class="card" style="--c: var(--mint)">
+          <small>с 3,9 до 7 лет</small>
+          <h3>Подготовка к школе</h3>
+          <p>Играем и учимся: внимание, речь, счёт, подготовка руки к письму и привычка к занятиям.</p>
+        </div>
+
+        <div class="card" style="--c: var(--sky)">
+          <small>1–4 классы</small>
+          <h3>Английский язык</h3>
+          <p>Занятия для школьников младших классов в понятной и дружелюбной форме.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Принципы ========== -->
+  <section>
+    <div class="wrap">
+      <h2>На чём строится наша работа</h2>
+
+      <ul class="points">
+        <li>
+          <strong>Безопасность</strong>
+          <span>Спокойная и надёжная атмосфера для ребёнка.</span>
+        </li>
+        <li>
+          <strong>Эффективность</strong>
+          <span>Занятия дают понятный результат.</span>
+        </li>
+        <li>
+          <strong>Игровые методики</strong>
+          <span>Учёба как увлекательная игра, а не обязанность.</span>
+        </li>
+        <li>
+          <strong>Опыт с 2008 года</strong>
+          <span>Много лет работы с детьми дошкольного и младшего школьного возраста.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== Контакты ========== -->
+  <section class="contact" id="kontakty">
+    <div class="wrap">
+      <h2>Контакты</h2>
+
+      <div class="grid">
+        <div>
+          <small>Телефон</small>
+          <a class="big" href="tel:+79877956678">8 987 795-66-78</a>
+        </div>
+
+        <div>
+          <small>Адрес</small>
+          <span class="big">Оренбург, Нижний проезд, 5/6</span>
+        </div>
+
+        <div>
+          <small>ВКонтакте</small>
+          <a class="big" href="https://vk.ru/club111517647" target="_blank" rel="noopener">Наше сообщество</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Подвал ========== -->
+  <footer>
+    <div class="wrap">© Детская студия Марины Швачко · Демо-версия сайта</div>
+  </footer>
+
+</body>
+</html>
